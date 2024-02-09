@@ -16,11 +16,13 @@
   --h2-font-size: 1.25rem;
   --normal-font-size: .938rem;
   --smaller-font-size: .75rem;
+  --height-percent: 200%;
   /*===== Margenes =====*/
   --mb-2: 1rem;
   --mb-4: 2rem;
   --mb-5: 2.5rem;
   --mb-6: 3rem;
+  --margin: 8%;
   /*===== z index =====*/
   --z-back: -10;
   --z-fixed: 100;
@@ -32,6 +34,8 @@
     --h2-font-size: 2rem;
     --normal-font-size: 1rem;
     --smaller-font-size: .875rem;
+    --height-percent: 110%;
+    --margin: 1.5%;
   }
 }
 
@@ -144,8 +148,6 @@ img {
   /*
    Add other styles for the skill icons in the grid as needed */
 }
-
-
 
 @media screen and (max-width: 767px) {
   .nav__menu {
@@ -316,13 +318,18 @@ img {
   align-self: center;
 }
 
-.home__title {
+.home__title1 {
   font-size: var(--big-font-size);
-  
+  margin-bottom: var(--margin);
+}
+
+.home__title2 {
+  font-size: var(--big-font-size);  
 }
 
 .home__sub-title{
   margin-bottom: var(--mb-5);
+  font-size: 28px;
 }
 
 .home__title-color {
@@ -358,6 +365,54 @@ img {
 
 .home__blob-img {
   width: 500px;
+}
+
+.dynamic-txts{  
+  height: 90px;
+  line-height: 90px;
+  overflow: hidden;
+}
+
+.dynamic-txts li{
+  list-style: none;
+  color: rgb(255, 153, 0);
+  font-size: var(--big-font-size);
+  font-weight: 500;
+  position: relative;
+  top: 0;
+  animation: slide 20s steps(4) infinite;
+}
+
+@keyframes slide {
+  100%{
+    top: -360px;
+  }
+}
+
+.dynamic-txts li span{
+  position: relative;
+  margin: 5px 0;
+  line-height: 90px;
+}
+
+.dynamic-txts li span::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  height: var(--height-percent);
+  width: 100%;
+  background: white;
+  border-left: 2px solid black;
+  animation: typing 5s steps(26) infinite;
+}
+
+@keyframes typing {
+  40%, 60%{
+    left: calc(100% + 30px);
+  }
+  100%{
+    left: 0;
+  }
 }
 
 /*BUTTONS*/
@@ -536,6 +591,7 @@ img {
   margin-bottom: var(--mb-4);
 }
 
+
 .footer__social {
   margin-bottom: var(--mb-1);
 }
@@ -549,6 +605,7 @@ img {
 .footer__copy {
   font-size: var(--smaller-font-size);
 }
+
 
 /* ===== MEDIA QUERIES=====*/
 @media screen and (max-width: 320px) {
